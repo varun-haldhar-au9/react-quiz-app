@@ -4,7 +4,7 @@ import * as Layout from "./components/Layout/";
 
 const Routing = (props) => {
   return (
-    <div class="container">
+    <div className="container">
       <Router>
         <Layout.NavBar />
         <Route exact path="/" component={Layout.Home} />

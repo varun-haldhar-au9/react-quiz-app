@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as female from "../../img/profiles/female";
-import * as male from "../../img/profiles/male";
 import "../../css/LeaderBoard.css";
 
 class LeaderBoard extends Component {
@@ -10,7 +8,7 @@ class LeaderBoard extends Component {
   };
   componentDidMount() {
     this.setState({
-      user: { ...this.props.users[0], index: "1st", avatar: female.d },
+      user: this.props.users[0],
     });
   }
   render() {
@@ -28,67 +26,38 @@ class LeaderBoard extends Component {
           </div>
           <div className="position text-center">
             <p>
-              You are in <b>{user.index}</b> place with <b>{user.points}</b>{" "}
+              You are in <b>{user.position}</b> place with <b>{user.points}</b>{" "}
               points
             </p>
           </div>
         </div>
         <div className="leaderboard-footer overflow-auto ">
-          {this.makeProfile(users)}
+          {users.map((user) => this.makeProfile(user))}
         </div>
       </div>
     );
   }
-  makeProfile = (users) => {
-    return users.map((user, index) => {
-      let image = "";
-      if (user.avatar === "") {
-        image = this.imageGenerator(user);
-      } else {
-        image = user.avatar;
-      }
-      return (
-        <div
-          onClick={(e) => this.onClickHandler(user, image, index + 1)}
-          type="button"
-          className="user d-flex justify-content-between"
-        >
-          <div>
-            <b className="number">{index + 1}</b>
-            <img src={image} alt="" />
-            <b className="name">{user.name}</b>
-          </div>
-          <div>
-            <b className="point">{user.points}</b>
-          </div>
+  makeProfile = (user) => {
+    return (
+      <div
+        onClick={(e) =>
+          this.setState({
+            user: user,
+          })
+        }
+        type="button"
+        className="user d-flex justify-content-between"
+      >
+        <div>
+          <b className="number">{user.index}</b>
+          <img src={user.avatar} alt="" />
+          <b className="name">{user.name}</b>
         </div>
-      );
-    });
-  };
-
-  onClickHandler(user, image, index) {
-    let position = "1st";
-    if (index === 2) {
-      position = "2nd";
-    } else if (index === 3) {
-      position = "3rd";
-    } else if (index > 3) {
-      position = `${index}th`;
-    }
-    this.setState({
-      user: { ...user, index: position, avatar: image },
-    });
-  }
-
-  imageGenerator = (user) => {
-    const rand = parseInt(0 + Math.random() * 4);
-    const fimg = [female.a, female.b, female.c, female.d];
-    const mimg = [male.a, male.b, male.c, male.d];
-    if (user.gender === "male") {
-      return mimg[rand];
-    } else {
-      return fimg[rand];
-    }
+        <div>
+          <b className="point">{user.points}</b>
+        </div>
+      </div>
+    );
   };
 }
 

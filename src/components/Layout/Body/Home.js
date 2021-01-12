@@ -20,9 +20,9 @@ class Home extends Component {
           <button type="button">Create Quiz</button>
         </div>
         <div className="footer-area">
-          <div class="row">
-            <div class="col-5"></div>
-            <div class="col-7">
+          <div className="row">
+            <div className="col-5"></div>
+            <div className="col-7">
               <div className="quiz-section">
                 <div className="quiz-heading">
                   <h4>Latest Quizzes</h4>

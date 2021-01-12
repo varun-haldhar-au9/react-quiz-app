@@ -3,7 +3,7 @@ import "../../css/Loader.css";
 
 const Loader = () => {
   return (
-    <div class="position-absolute top-25 start-50 translate-middle">
+    <div className="position-absolute top-25 start-50 translate-middle">
       <div className="loader">
         <img src={loader} alt="loader" />
       </div>

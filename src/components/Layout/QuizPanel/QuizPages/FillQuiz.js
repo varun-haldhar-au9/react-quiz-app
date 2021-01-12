@@ -24,7 +24,7 @@ const FillQuiz = ({ quiz }) => {
           ) : null}
         </div>
         <div className="btn-div col">
-          <div class="d-flex justify-content-end">
+          <div className="d-flex justify-content-end">
             {currentPage < 9 ? (
               <button
                 onClick={() => setCurrentPage(currentPage + 1)}

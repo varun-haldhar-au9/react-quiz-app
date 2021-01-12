@@ -37,7 +37,7 @@ export default class Timer extends Component {
     const { minutes, seconds } = this.state;
     return (
       <div className="main-div-timer">
-        <div class="timer">
+        <div className="timer">
           {minutes === 0 && seconds === 0 ? (
             <h5>00:00</h5>
           ) : (
